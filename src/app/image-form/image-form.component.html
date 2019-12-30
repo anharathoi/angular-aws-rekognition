@@ -1,0 +1,21 @@
+<p>image-form works!</p>
+
+
+<form
+  [formGroup]="form"
+  (ngSubmit)="onFileUpload($event)"
+  enctype="multipart/form-data">
+  
+  <input
+    name="image"
+    formControlName="image"
+    type="file"
+    (change)="onFileSelected($event)"
+    >
+
+  <input type="submit">
+</form>
+
+<div *ngIf="url">
+  <img [src]="url">
+</div>
