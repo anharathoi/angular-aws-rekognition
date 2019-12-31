@@ -1,21 +1,99 @@
-<p>image-form works!</p>
-
-
-<form
-  [formGroup]="form"
-  (ngSubmit)="onFileUpload($event)"
-  enctype="multipart/form-data">
-  
-  <input
-    name="image"
-    formControlName="image"
-    type="file"
-    (change)="onFileSelected($event)"
+<div class="image-form-container">
+  <h1>Face Detection</h1>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onFileUpload($event)"
+    enctype="multipart/form-data">
+    
+    <input
+      name="image"
+      formControlName="image"
+      type="file"
+      (change)="onFileSelected($event)"
+      class="ui button"
     >
 
-  <input type="submit">
-</form>
-
-<div *ngIf="url">
-  <img [src]="url">
+    <input type="submit" class="ui primary button">
+  </form>
 </div>
+
+<div *ngIf="url; else elseBlock">
+  <div class="image-stat-container">
+    <div class="image-container">
+      <img [src]="url">
+    </div>
+    <div class="stats">
+      loaded
+      <div class="descriptive">
+        <p>Age Range:</p>
+        <p>
+          {{stats.AgeRange.Low}} - {{stats.AgeRange.High}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Smile:</p>
+        <p>
+          {{stats?.Smile.Value}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Eyeglasses: </p>
+        <p>
+          {{stats.Eyeglasses.Value}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Sunglasses:</p>
+        <p>
+          {{stats.Sunglasses.Value}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Beard:</p>
+        <p>
+          {{stats.Beard.Value}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <div  class="image-stat-container">
+    <div class="image-container">
+      <img src="https://image-rekog-anhar.s3-ap-southeast-2.amazonaws.com/beard.jpeg">
+    </div>
+    <div class="stats">
+      <div class="descriptive">
+        <p>Age Range:</p>
+        <p>
+          {{stats.AgeRange.Low}} - {{stats.AgeRange.High}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Smile:</p>
+        <p>
+          {{stats?.Smile.Value}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Eyeglasses: </p>
+        <p>
+          {{stats.Eyeglasses.Value}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Sunglasses:</p>
+        <p>
+          {{stats.Sunglasses.Value}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Beard:</p>
+        <p>
+          {{stats.Beard.Value}}
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>

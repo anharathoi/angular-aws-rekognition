@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
-
+import { data } from './responseObject';
 @Component({
   selector: 'image-form',
   templateUrl: './image-form.component.html',
@@ -9,7 +9,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ImageFormComponent implements OnInit {
   url: string;
-  uploadedImage: File = null;
+  stats:any = data["FaceDetails"][0] // will change from type 'object' to 'interface' later
+  test = this.stats ? true : false
+  uploadedImage: File;
   form = new FormGroup({
     image: new FormControl()
   })
@@ -20,8 +22,9 @@ export class ImageFormComponent implements OnInit {
 
     this.http.post("http://localhost:3000/upload/", fd)
     .subscribe(response => {
-      console.log(response["src"]);
+      console.log(response);
       this.url = response["src"]
+      this.stats = response["stats"]["FaceDetails"][0]
     })
   }
 
@@ -36,7 +39,5 @@ export class ImageFormComponent implements OnInit {
     })
   }
   
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
