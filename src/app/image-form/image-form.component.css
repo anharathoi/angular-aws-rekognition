@@ -38,3 +38,6 @@
   display: flex;
   justify-content: space-between;
 }
+.no-content{
+  text-align: center;
+}

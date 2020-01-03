@@ -20,7 +20,7 @@ export class ImageFormComponent implements OnInit {
     const fd = new FormData()
     fd.append('image',this.uploadedImage, this.uploadedImage.name)
 
-    this.http.post("http://localhost:3000/upload/", fd)
+    this.http.post("https://backend.anharzihan.now.sh/upload", fd)
     .subscribe(response => {
       console.log(response);
       this.url = response["src"]
@@ -33,7 +33,7 @@ export class ImageFormComponent implements OnInit {
   }
   
   constructor(private http: HttpClient) {
-    http.get('http://localhost:3000/')
+    http.get(' https://backend.anharzihan.now.sh/')
     .subscribe(response => {
       console.log(response);
     })
