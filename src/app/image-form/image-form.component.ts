@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 import { data } from './responseObject';
@@ -9,20 +9,18 @@ import { data } from './responseObject';
 })
 export class ImageFormComponent implements OnInit {
   url: string;
-  stats:any = data["FaceDetails"][0] // will change from type 'object' to 'interface' later
-  test = this.stats ? true : false
+  stats: any = data["FaceDetails"][0] // will change from type 'object' to 'interface' later
   uploadedImage: File;
   form = new FormGroup({
     image: new FormControl()
   })
   
   onFileUpload(event){
-    const fd = new FormData()
-    fd.append('image',this.uploadedImage, this.uploadedImage.name)
+    const formData = new FormData()
+    formData.append('image',this.uploadedImage, this.uploadedImage.name)
 
-    this.http.post("https://backend.anharzihan.now.sh/upload", fd)
+    this.http.post("https://backend.anharzihan.now.sh/upload", formData)
     .subscribe(response => {
-      console.log(response);
       this.url = response["src"]
       this.stats = response["stats"]["FaceDetails"][0]
     })
@@ -33,11 +31,12 @@ export class ImageFormComponent implements OnInit {
   }
   
   constructor(private http: HttpClient) {
-    http.get(' https://backend.anharzihan.now.sh/')
+  }
+  
+  ngOnInit() {
+    this.http.get('https://backend.anharzihan.now.sh/')
     .subscribe(response => {
       console.log(response);
     })
   }
-  
-  ngOnInit() {}
 }

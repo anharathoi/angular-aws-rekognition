@@ -1,0 +1,19 @@
+.test-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.test-image {
+  margin: 2px;
+}
+
+#test-image-header {
+  margin: 50px;
+  text-align: center;
+}
+
+.test-image img{
+ max-height: 100px;
+}

@@ -1,0 +1,8 @@
+<h1 id="test-image-header">Test Images should be here</h1>
+<div class="test-images">
+  <div *ngFor="let image of images" class="test-image">
+    <button (click)="onImageClick(image)">
+      <img [src]="image.src" >
+    </button>
+  </div>
+</div>

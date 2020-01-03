@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rekog-fe';
+  stats: any;
+  testDataChanged: boolean = false;
+
+  onImageChange(e){
+    this.stats = e
+    this.testDataChanged = !this.testDataChanged
+    console.log(this.stats);
+  }
 }
