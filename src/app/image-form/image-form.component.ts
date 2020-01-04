@@ -9,20 +9,21 @@ import { data } from './responseObject';
   styleUrls: ['./image-form.component.css']
 })
 export class ImageFormComponent implements OnInit {
-  url: string;
-  stats: any = data["FaceDetails"][0] // will change from type 'object' to 'interface' later
-  @Input() newData = this.stats;
+  url = data["src"];
+  stats: any = data["stats"]["FaceDetails"][0] // will change from type 'object' to 'interface' later
+  @Input() newData: any;
   uploadedImage: File;
   form = new FormGroup({
     image: new FormControl()
   });
 
   ngOnChanges(){
-    console.log(this.newData);
-    console.log(this.stats);
-    this.stats = this.newData.stats.FaceDetails[0];
-    this.url = this.newData.src
+    if(this.newData){
+      this.url = this.newData.src
+      this.stats = this.newData.stats.FaceDetails[0]
+    }
   }
+  
   onFileUpload(event){
     const formData = new FormData()
     formData.append('image',this.uploadedImage, this.uploadedImage.name)
