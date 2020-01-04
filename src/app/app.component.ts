@@ -13,6 +13,6 @@ export class AppComponent {
   onImageChange(e){
     this.stats = e
     this.testDataChanged = !this.testDataChanged
-    console.log(this.stats);
+    // console.log(this.stats);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 import { data } from './responseObject';
+
 @Component({
   selector: 'image-form',
   templateUrl: './image-form.component.html',
@@ -10,11 +11,18 @@ import { data } from './responseObject';
 export class ImageFormComponent implements OnInit {
   url: string;
   stats: any = data["FaceDetails"][0] // will change from type 'object' to 'interface' later
+  @Input() newData = this.stats;
   uploadedImage: File;
   form = new FormGroup({
     image: new FormControl()
-  })
-  
+  });
+
+  ngOnChanges(){
+    console.log(this.newData);
+    console.log(this.stats);
+    this.stats = this.newData.stats.FaceDetails[0];
+    this.url = this.newData.src
+  }
   onFileUpload(event){
     const formData = new FormData()
     formData.append('image',this.uploadedImage, this.uploadedImage.name)

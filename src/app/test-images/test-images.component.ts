@@ -15,7 +15,7 @@ export class TestImagesComponent implements OnInit {
 
   onImageClick(imageParams){
     this.ifClicked = !this.ifClicked;
-    this.change.emit(imageParams.stats.FaceDetails[0])
+    this.change.emit(imageParams)
   }
 
   ngOnInit() {
