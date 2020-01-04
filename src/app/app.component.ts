@@ -8,11 +8,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'rekog-fe';
   stats: any;
-  testDataChanged: boolean = false;
+  url: string;
 
   onImageChange(e){
-    this.stats = e
-    this.testDataChanged = !this.testDataChanged
-    // console.log(this.stats);
+    this.stats = e.stats.FaceDetails[0]
+    this.url = e.src
+  }
+  onResponse(e){
+    this.url = e["src"]
+    this.stats = e["stats"]["FaceDetails"][0]
   }
 }

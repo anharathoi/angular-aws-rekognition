@@ -1,0 +1,40 @@
+.image-stat-container {
+  border: #999797 1px solid;
+  width: 70%;
+  margin: 40px auto;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-container{
+  display: flex;
+  justify-content: center;
+  border: 1px solid #999797;
+  border-right: none;
+  width: 400px;
+  padding: 20px;
+}
+
+.image-container img {
+  margin: auto;
+  max-height: 400px;
+  max-width: 100%;
+}
+
+.stats {
+  font-family: 'Courier New', Courier, monospace;
+  width: 400px;
+  font-size: 100%;
+  padding: 20px;
+  border: 1px solid rgb(211, 31, 181);
+  border-left: none;
+}
+.descriptive {
+  display: flex;
+  justify-content: space-between;
+}
+.no-content{
+  text-align: center;
+}

@@ -1,3 +1,4 @@
+import { ImageDetailsComponent } from './image-details/image-details.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,8 @@ import { TestImagesComponent } from './test-images/test-images.component';
   declarations: [
     AppComponent,
     ImageFormComponent,
-    TestImagesComponent
+    TestImagesComponent,
+    ImageDetailsComponent
   ],
   imports: [
     BrowserModule,

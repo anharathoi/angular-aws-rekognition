@@ -1,5 +1,6 @@
 <div class="main-app">
   <h1>Face Detection with AWS Rekognition</h1>
   <test-images [ifClicked]="ifClicked" (change)="onImageChange($event)"></test-images>
-  <image-form [newData]="stats"></image-form>
+  <image-form (responseReceived)="onResponse($event)"></image-form>
+  <image-details [newData]="stats" [newURL]="url"></image-details>
 </div>
