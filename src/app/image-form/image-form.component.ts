@@ -8,6 +8,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./image-form.component.css']
 })
 export class ImageFormComponent implements OnInit {
+  loading: boolean = false;
   @Output() responseReceived = new EventEmitter()
   uploadedImage: File;
   form = new FormGroup({
@@ -17,13 +18,13 @@ export class ImageFormComponent implements OnInit {
   onFileUpload(event){
     const formData = new FormData()
     formData.append('image',this.uploadedImage, this.uploadedImage.name)
-
+    this.loading = true;
     this.http.post("https://backend.anharzihan.now.sh/upload", formData)
     .subscribe(response => {
+      this.loading = false;
       this.responseReceived.emit(response)
     })
   }
-
   onFileSelected(event){
     this.uploadedImage = event.target.files[0]
   }

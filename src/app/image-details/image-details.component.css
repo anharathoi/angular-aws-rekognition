@@ -1,7 +1,7 @@
 .image-stat-container {
   border: #999797 1px solid;
   width: 70%;
-  margin: 40px auto;
+  margin: 0px auto;
   padding: 40px;
   display: flex;
   justify-content: center;
@@ -30,6 +30,11 @@
   padding: 20px;
   border: 1px solid rgb(211, 31, 181);
   border-left: none;
+}
+
+.stats:nth-child(3){
+  border: none;
+  border-bottom: 1px solid rgb(211, 31, 181);
 }
 .descriptive {
   display: flex;

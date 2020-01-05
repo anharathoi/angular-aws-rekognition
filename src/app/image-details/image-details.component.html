@@ -4,10 +4,17 @@
       <img [src]="url">
     </div>
     <div class="stats">
+      <h2>Results</h2>
       <div class="descriptive">
         <p>Age Range:</p>
         <p>
           {{stats?.AgeRange.Low}} - {{stats.AgeRange.High}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Mouth Open</p>
+        <p>
+          {{stats?.MouthOpen.Value}}
         </p>
       </div>
       <div class="descriptive">
@@ -16,16 +23,11 @@
           {{stats?.Gender.Value}}
         </p>
       </div>
-      <div class="descriptive">
-        <p>Smile:</p>
-        <p>
-          {{stats?.Smile.Value}}
-        </p>
-      </div>
+
       <div class="descriptive">
         <p>Eyeglasses: </p>
         <p>
-          {{stats.Eyeglasses.Value}}
+          {{stats?.Eyeglasses.Value}}
         </p>
       </div>
       <div class="descriptive">
@@ -38,6 +40,22 @@
         <p>Beard:</p>
         <p>
           {{stats.Beard.Value}}
+        </p>
+      </div>
+      <div class="descriptive">
+        <p>Smile:</p>
+        <p>
+          {{stats?.Smile.Value}}
+          {{stats?.Smile.Confidence |  number:'1.1-2'}}%
+        </p>
+      </div>
+    </div>
+    <div class="stats">
+      <h3>Emotions</h3>
+      <div *ngFor="let emotion of stats.Emotions" class="descriptive">
+        <p>{{emotion.Type}}</p>
+        <p>
+          {{emotion.Confidence |  number:'1.1-2'}}%
         </p>
       </div>
     </div>
