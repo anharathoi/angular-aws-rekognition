@@ -15,6 +15,7 @@ export class ImageFormComponent implements OnInit {
     image: new FormControl()
   });
   // this is another test
+  constructor(private service: ImageService) {}
 
   onFileUpload(){
     const formData = new FormData()
@@ -26,11 +27,9 @@ export class ImageFormComponent implements OnInit {
       this.responseReceived.emit(response)
     })
   }
+  
   onFileSelected(event){
     this.uploadedImage = event.target.files[0]
-  }
-  
-  constructor(private service: ImageService) {
   }
   
   ngOnInit() {
