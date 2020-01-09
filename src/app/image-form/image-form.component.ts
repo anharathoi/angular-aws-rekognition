@@ -1,5 +1,5 @@
+import { ImageService } from './../services/image-services/image.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -14,12 +14,13 @@ export class ImageFormComponent implements OnInit {
   form = new FormGroup({
     image: new FormControl()
   });
+  // this is another test
 
-  onFileUpload(event){
+  onFileUpload(){
     const formData = new FormData()
     formData.append('image',this.uploadedImage, this.uploadedImage.name)
     this.loading = true;
-    this.http.post("https://backend.anharzihan.now.sh/upload", formData)
+    this.service.uploadImage(formData)
     .subscribe(response => {
       this.loading = false;
       this.responseReceived.emit(response)
@@ -29,11 +30,11 @@ export class ImageFormComponent implements OnInit {
     this.uploadedImage = event.target.files[0]
   }
   
-  constructor(private http: HttpClient) {
+  constructor(private service: ImageService) {
   }
   
   ngOnInit() {
-    this.http.get('https://backend.anharzihan.now.sh/')
+    this.service.checkAppStatus()
     .subscribe(response => {
       console.log(response);
     })

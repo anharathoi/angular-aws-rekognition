@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ImageFormComponent } from './image-form/image-form.component';
 import { TestImagesComponent } from './test-images/test-images.component';
+import { ImageService } from './services/image-services/image.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { TestImagesComponent } from './test-images/test-images.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    ImageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
