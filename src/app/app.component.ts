@@ -10,12 +10,12 @@ export class AppComponent {
   stats: any;
   url: string;
 
-  onImageChange(e){
-    this.stats = e.stats.FaceDetails[0]
-    this.url = e.src
+  onImageChange(e) {
+    this.stats = e.stats.FaceDetails[0];
+    this.url = e.src;
   }
-  onResponse(e){
-    this.url = e["src"]
-    this.stats = e["stats"]["FaceDetails"][0]
+  onResponse(e) {
+    this.url = e.src;
+    this.stats = e.stats.FaceDetails[0];
   }
 }

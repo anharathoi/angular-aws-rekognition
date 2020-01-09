@@ -9,19 +9,16 @@ import { images } from './test-image-responses';
 export class TestImagesComponent implements OnInit {
   @Input() ifClicked = true;
   @Output() change = new EventEmitter();
-  images: [Object] = images;
+  images: [object] = images;
 
   constructor() {}
 
-  onImageClick(imageParams){
+  onImageClick(imageParams) {
     this.ifClicked = !this.ifClicked;
-    this.change.emit(imageParams)
+    this.change.emit(imageParams);
   }
 
   ngOnInit() {
   }
 
 }
-
-
-// click on testImages --> fires event to app --> changes data --> should fire change to image-form

@@ -14,12 +14,11 @@ export class ImageDetailsComponent {
   // when fetching data from api
   @Input() newURL: string;
   @Input() newData: any;
-  constructor() { }
 
-  ngOnChanges(e){
-    if(this.newData){
-      this.url = this.newURL
-      this.stats = this.newData
+  ngOnChanges() {
+    if (this.newData) {
+      this.url = this.newURL;
+      this.stats = this.newData;
     }
   }
 }
